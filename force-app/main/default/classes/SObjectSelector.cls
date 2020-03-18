@@ -110,7 +110,7 @@ public inherited sharing abstract class SObjectSelector
     }
 
     //Property to hold the query that needs to be executed
-    protected String soqlQuery {private get; set;}
+    protected String soqlQuery {get; set;}
 
     public String returnQuery()
     {
