@@ -10,7 +10,7 @@ public inherited sharing class AccountSelectorMock implements AccountInterface
  
     //There is a selectById method in the real selector, which is also present in the interface, so it has to be implemented
     //Instead of performing the query, the method returns the list property
-    public List<Account> selectById(Set<String> lsAccountIds)
+    public List<Account> selectByName(Set<String> lsAccountNames)
     {
         return lsAccounts;
     }    

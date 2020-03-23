@@ -5,6 +5,6 @@ Description: Interface to help with the mocking of queries of the account select
 ***********************************************************************/
 public interface AccountInterface 
 {
-    //Method to get the accounts by Id, to be implemented in the other classes
-    List<Account> selectById(Set<String> lsAccountIds);    
+    //Method to get the accounts by Name, to be implemented in the other classes
+    List<Account> selectByName(Set<String> lsAccountNames);    
 } 

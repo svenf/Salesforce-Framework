@@ -13,8 +13,8 @@ public inherited sharing class AccountSelector extends SObjectSelector implement
         return Account.SObjectType;
     }  
 
-    //Selector method to get the accounts based on a set of account Id's
-    public List<Account> selectById(Set<String> lsAccountIds)
+    //Selector method to get the accounts based on a set of account names
+    public List<Account> selectByname(Set<String> lsAccountNames)
     {
         soqlQuery = String.format(
             'SELECT {0} ' +
@@ -26,7 +26,7 @@ public inherited sharing class AccountSelector extends SObjectSelector implement
                 getSObjectName(),
                 getOrderByString(),
                 getSecurityString(),
-                'Name IN :lsAccountIds'
+                'Name IN :lsAccountnames'
             }
         );        
         return Database.query(soqlQuery);

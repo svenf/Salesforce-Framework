@@ -12,6 +12,6 @@ public with sharing class AccountService
     //Method to call the right query from the selector class and return the results
     public List<Account> getAccounts()
     {
-        return accountInstance.selectById(new Set<String> {'Name1'});
+        return accountInstance.selectByName(new Set<String> {'Name1'});
     }
 }

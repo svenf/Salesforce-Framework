@@ -100,19 +100,10 @@ public inherited sharing abstract class SObjectSelector
         return '';
     }
 
-    //Method to check if you have access to the object
-    public void assertIsAccessible()
-    {
-        if(!getSObjectType().getDescribe().isAccessible())
-        {
-            throw new SObjectSelectorException('Permission to access object ' + getSObjectName() + ' denied.');
-        }
-    }
-
     //Property to hold the query that needs to be executed
     protected String soqlQuery {get; set;}
 
-    public String returnQuery()
+    public String getSoqlQuery()
     {
         return soqlQuery;
     }    
@@ -120,6 +111,7 @@ public inherited sharing abstract class SObjectSelector
     // Add security check to queries to prevent restricted access
     public Boolean withSecurityEnforced {get; set;}
 
+    @TestVisible
     protected String getSecurityString()
     {
         /*Security.SObjectAccessDecision securityDecision = Security.stripInaccessible(AccessType.READABLE, lsResults);
@@ -142,5 +134,6 @@ public inherited sharing abstract class SObjectSelector
     }
 
     //Create specific exception for the selector layer
+    @TestVisible
     private class SObjectSelectorException extends Exception {}
 }
