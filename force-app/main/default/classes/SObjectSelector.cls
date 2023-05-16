@@ -1,9 +1,7 @@
 /**********************************************************************
- Name: SObjectSelector
-======================================================
 Description: Abstract class for the selector layer to do queries
 ***********************************************************************/
-public inherited sharing abstract class SObjectSelector
+public without sharing abstract class SObjectSelector
 {
     //Implement this method to inform the base class of the SObject (custom or standard) to be queried
     //This needs to be implemented by the child classes
@@ -21,6 +19,7 @@ public inherited sharing abstract class SObjectSelector
     {
         //Init the paging property
         this.paging = new SObjectSelectorPaging();
+        this.accessLevel = System.AccessLevel.USER_MODE;
     }    
 
     //Public property to define the fields to be returned (defined as strings)
@@ -109,23 +108,7 @@ public inherited sharing abstract class SObjectSelector
     }    
 
     // Add security check to queries to prevent restricted access
-    public Boolean withSecurityEnforced {get; set;}
-
-    @TestVisible
-    protected String getSecurityString()
-    {
-        /*Security.SObjectAccessDecision securityDecision = Security.stripInaccessible(AccessType.READABLE, lsResults);
-        System.debug(securityDecision.getRecords());*/
-        
-        if (withSecurityEnforced == null || withSecurityEnforced)
-        {
-            return 'WITH SECURITY_ENFORCED';
-        }
-        else
-        {
-            return '';
-        }
-    }
+    public System.AccessLevel accessLevel {get; set;}
 
     //Method to return a SObjectSelectorResult object based on a list of sobjects and a soqlquery
     public SObjectSelectorResult returnQueryresult(List<SObject> lsObjects)
