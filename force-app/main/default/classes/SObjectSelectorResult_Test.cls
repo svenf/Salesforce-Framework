@@ -1,6 +1,4 @@
 /**********************************************************************
- Name: SObjectSelectorResult_Test
-======================================================
 Description: Test class to test the paging logic in SObjectSelectorResult
 ***********************************************************************/
 @IsTest
@@ -11,8 +9,8 @@ private with sharing class SObjectSelectorResult_Test
     {
         Test.startTest();
         SObjectSelectorResult objectResult = new SObjectSelectorResult(new List<Account> {new Account (Name = 'Test1')});
-        System.assertEquals(1, objectResult.data.size(), 'One account was passed, so the data property should be equal to 1');        
-        System.assertEquals(1, objectResult.paging.currentPage, 'No paging instance was passed, so it creates an instance');
+        Assert.areEqual(1, objectResult.data.size(), 'One account was passed, so the data property should be equal to 1');        
+        Assert.areEqual(1, objectResult.paging.currentPage, 'No paging instance was passed, so it creates an instance');
         Test.stopTest();
     }
 
@@ -21,8 +19,8 @@ private with sharing class SObjectSelectorResult_Test
     {
         Test.startTest();
         SObjectSelectorResult objectResult = new SObjectSelectorResult(new List<Account> {new Account (Name = 'Test1')}, new SObjectSelectorPaging());
-        System.assertEquals(1, objectResult.data.size(), 'One account was passed, so the data property should be equal to 1');        
-        System.assertEquals(1, objectResult.paging.currentPage, 'A paging instance was passed, so it uses the instance');
+        Assert.areEqual(1, objectResult.data.size(), 'One account was passed, so the data property should be equal to 1');        
+        Assert.areEqual(1, objectResult.paging.currentPage, 'A paging instance was passed, so it uses the instance');
         Test.stopTest();
     }
 }

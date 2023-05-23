@@ -1,7 +1,5 @@
 /**********************************************************************
- Name: SObjectSelectorPaging
-======================================================
-Description: Class to help with the pagination in queries
+Description: Class to help with the pagination in queries 
 Limited to 2000 records via LIMIT and OFFSET
 ***********************************************************************/
 public with sharing class SObjectSelectorPaging 

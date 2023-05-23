@@ -100,15 +100,34 @@ public without sharing abstract class SObjectSelector
     }
 
     //Property to hold the query that needs to be executed
-    protected String soqlQuery {get; set;}
+    @TestVisible
+    protected String soqlQuery {get; set;}       
 
-    public String getSoqlQuery()
-    {
-        return soqlQuery;
-    }    
+    public System.AccessLevel accessLevel {private get; set;}
 
-    // Add security check to queries to prevent restricted access
-    public System.AccessLevel accessLevel {get; set;}
+    public List<SObject> doQuery() {
+        return Database.query(this.soqlQuery, this.accessLevel);
+    }
+
+    public List<SObject> doQueryWithBinds(Map<String, Object> binds) {
+        return Database.queryWithBinds(this.soqlQuery, binds, this.accessLevel);
+    }
+    
+    public List<AggregateResult> doAggregateQuery() {
+        return Database.query(this.soqlQuery, this.accessLevel);
+    }
+
+    public List<AggregateResult> doAggregateQueryWithBinds(Map<String, Object> binds) {
+        return Database.queryWithBinds(this.soqlQuery, binds, this.accessLevel);
+    }
+
+    public Integer doCountQuery() {
+        return Database.countQuery(this.soqlQuery, this.accessLevel);
+    }
+
+    public Integer doCountQueryWithBinds(Map<String, Object> binds) {
+        return Database.countQueryWithBinds(this.soqlQuery, binds, this.accessLevel);
+    }
 
     //Method to return a SObjectSelectorResult object based on a list of sobjects and a soqlquery
     public SObjectSelectorResult returnQueryresult(List<SObject> lsObjects)

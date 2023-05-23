@@ -1,6 +1,4 @@
 /**********************************************************************
- Name: SObjectSelectorPaging_Test
-======================================================
 Description: Test class to test the paging logic in SObjectSelectorPaging
 ***********************************************************************/
 @IsTest
